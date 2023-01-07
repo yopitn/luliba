@@ -1,0 +1,171 @@
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+    format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/inter/v12/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2)
+    format("woff2");
+}
+
+::selection {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+*,
+::after,
+::before {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: 800;
+  color: $titleColor;
+}
+
+h1 {
+  font-size: 1.875rem;
+}
+
+h2 {
+  font-size: 1.625rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.375rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1.125rem;
+}
+
+a {
+  color: $linkColor;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.8;
+    transform: 0.15s ease;
+  }
+}
+
+table {
+  border-spacing: 0;
+}
+
+iframe {
+  max-width: 100%;
+  border: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+  font-size: 100%;
+  color: inherit;
+  line-height: normal;
+  vertical-align: baseline;
+}
+
+img {
+  position: relative;
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+svg {
+  width: 24px;
+  height: 24px;
+  fill: $iconColor;
+
+  &.line,
+  .line {
+    fill: none !important;
+    stroke: $iconColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-width: 1;
+  }
+}
+
+section {
+  position: relative;
+  width: 100%;
+  padding: 80px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  ::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 6px;
+    height: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: rgb(0, 0, 0, 0.15);
+    border-radius: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  padding: 0 !important;
+  width: 100%;
+  font-family: $defaultFont;
+  font-size: 16px;
+  color: $textColor;
+  background-color: $bodyBackground;
+  -webkit-font-smoothing: antialiased;
+  word-break: break-word;
+  transition: 0.1s ease;
+}
