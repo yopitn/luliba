@@ -2,6 +2,8 @@
 
 Merupakan sebuah aplikasi e-commerce yang dibuat menggunakan PHP dan MySQL. Aplikasi ini saya buat dengan tujuan untuk pembelajaran.
 
+Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap belajar.
+
 ## Goals
 
 **Cores**

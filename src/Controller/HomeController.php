@@ -10,7 +10,7 @@ class HomeController
     public function get()
     {
         $decode = SessionService::getSession();
-        $role = $decode->role;
+        $role = $decode ? $decode->role : null;
 
         View::render("blog/home", [
             "title" => "Luliba",

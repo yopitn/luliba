@@ -76,6 +76,10 @@
     h1 {
       font-size: 22px;
       font-weight: 500;
+
+      .title {
+        color: $titleColor;
+      }
     }
   }
 
@@ -84,21 +88,83 @@
       list-style: none;
       padding: 0;
       margin: 0;
+    }
 
-      @include breakpoint-min(lg) {
+    @include breakpoint-min(lg) {
+      > ul {
         display: inline-flex;
         align-items: center;
 
-        li:not(:last-child) {
-          margin-right: 20px;
+        > li {
+          position: relative;
+          display: inline-flex;
+          align-items: center;
+          height: $headerHeight;
+          margin: 0 10px;
+
+          &:hover .header__menu-dropdown {
+            max-height: 100vh;
+            opacity: 1;
+            visibility: visible;
+          }
+
+          &:hover {
+            .link svg {
+              transform: rotate(-180deg);
+            }
+          }
+        }
+      }
+    }
+
+    &-dropdown {
+      max-height: 0;
+      opacity: 0;
+      visibility: hidden;
+      overflow: hidden;
+      transition: 0.1s ease;
+
+      @include breakpoint-min(lg) {
+        position: absolute;
+        top: calc($headerHeight - 1px);
+        left: -16px;
+        right: -16px;
+        min-width: 180px;
+        background-color: $headerBackground;
+        box-shadow: 0 10px 26px -10px rgba(0, 0, 0, 0.15);
+        border-radius: 0 0 8px 8px;
+        transition: 0.1s ease;
+        z-index: 2;
+
+        .link {
+          display: block;
+          padding: 10px 16px;
+        }
+      }
+
+      @include breakpoint-max(lg) {
+        .link {
+          padding-left: 40px !important;
         }
       }
     }
 
     .link {
+      display: flex;
+      align-items: center;
       color: $textColor;
       font-size: 14px;
       font-weight: 500;
+      cursor: pointer;
+      user-select: none;
+
+      svg {
+        width: 12px;
+        height: 12px;
+        stroke-width: 3;
+        margin-left: 5px;
+        transition: 0.1s ease;
+      }
     }
 
     @include breakpoint-max(lg) {
@@ -116,7 +182,7 @@
       z-index: 20;
 
       .link {
-        display: block;
+        justify-content: space-between;
         font-size: 15px;
         font-weight: 400;
         padding: 14px 20px;
@@ -127,6 +193,16 @@
           opacity: 1;
           background-color: #f5f7f9;
         }
+      }
+
+      .off-dropdown:checked ~ .link svg {
+        transform: rotate(-180deg);
+      }
+
+      .off-dropdown:checked ~ .header__menu-dropdown {
+        max-height: 100vh;
+        opacity: 1;
+        visibility: visible;
       }
     }
   }
@@ -141,6 +217,19 @@
 
       li:not(:last-child) {
         margin-right: 10px;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+
+      svg {
+        width: 18px;
+        height: 18px;
+        stroke: $whiteColor;
+        stroke-width: 1.8;
+        margin-right: 6px;
       }
     }
   }
