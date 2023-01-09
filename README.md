@@ -38,7 +38,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 - [ ] Halaman profile/setting.
 - [ ] Halaman about us.
 - [ ] Halaman contact us.
-- [ ] Logic logout.
+- [x] Logic customer logout.
 
 **Admin**
 
@@ -54,4 +54,4 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 - [ ] Halaman admin.
   - [x] Halaman product (findAll, create, update).
   - [ ] Halaman order (confirm).
-  - [ ] Halaman logout.
+  - [x] Logic admin logout.

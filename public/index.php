@@ -8,6 +8,7 @@ use App\Controller\AdminProductNewController;
 use App\Controller\AdminProductUpdateController;
 use App\Controller\HomeController;
 use App\Controller\LoginController;
+use App\Controller\LogoutController;
 use App\Controller\SignupController;
 use App\Core\Routes;
 use App\Middleware\LoginMiddleware;
@@ -20,9 +21,12 @@ Routes::post("/login", LoginMiddleware::class . "::isNotLogin", LoginController:
 Routes::get("/signup", LoginMiddleware::class . "::isNotLogin", SignupController::class . "::get");
 Routes::post("/signup", LoginMiddleware::class . "::isNotLogin", SignupController::class . "::post");
 
-Routes::get("/admin", null, AdminController::class . "::get");
-Routes::get("/admin/products", null, AdminProductController::class . "::get");
-Routes::get("/admin/product/new", null, AdminProductNewController::class . "::get");
-Routes::get("/admin/product/id", null, AdminProductUpdateController::class . "::get");
+Routes::get("/admin", LoginMiddleware::class . "::isAdmin", AdminController::class . "::get");
+Routes::get("/admin/products", LoginMiddleware::class . "::isAdmin", AdminProductController::class . "::get");
+Routes::get("/admin/product/new", LoginMiddleware::class . "::isAdmin", AdminProductNewController::class . "::get");
+Routes::get("/admin/product/id", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::get");
+
+Routes::get("/logout", LoginMiddleware::class . "::isCustomer", LogoutController::class . "::get");
+Routes::get("/admin/logout", LoginMiddleware::class . "::isAdmin", LogoutController::class . "::get");
 
 Routes::run();

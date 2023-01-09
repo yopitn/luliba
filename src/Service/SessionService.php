@@ -53,6 +53,9 @@ class SessionService
 
             setcookie("luliba-session", $jwt, $options);
 
+            $session = $this->connection->prepare("INSERT INTO session (user_id, session) VALUES (?, ?)");
+            $session->execute([$row["id"], $jwt]);
+
             $model = new UserModel();
             $model->id = $row["id"];
             $model->name = $row["name"];
@@ -64,13 +67,25 @@ class SessionService
         }
     }
 
+    public function destroy(UserModel $model): void
+    {
+        try {
+            $session = $this->connection->prepare("DELETE FROM session WHERE user_id = ?");
+            $session->execute([$model->id]);
+
+            setcookie("luliba-session", '', 1, "/");
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
+
     public static function getSession()
     {
         if (isset($_COOKIE["luliba-session"])) {
             $jwt = $_COOKIE["luliba-session"];
 
             $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
-            
+
             return $decode;
         }
     }
