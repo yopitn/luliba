@@ -13,6 +13,7 @@
   background-color: transparent;
   color: $textColor;
   font-size: 14px;
+  font-weight: 500;
   text-align: center;
   text-decoration: none;
   padding: 10px 14px;
@@ -30,4 +31,25 @@
 .btn-secondary {
   background-color: $buttonColor;
   color: $whiteColor;
+}
+
+// Preloader
+.preloader {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  background-color: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
+  background-repeat: no-repeat;
+  background-size: 200% 100%;
+  animation: shine 1.25s linear infinite forwards;
 }

@@ -82,7 +82,7 @@
         </ul>
       </div>
 
-      <?php if ($model["role"] !== "customer") { ?>
+      <?php if ($model["role"] !== "customer" && $model["role"] !== "admin") { ?>
         <div class="header__action">
           <ul>
             <li>
