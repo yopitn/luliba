@@ -52,6 +52,6 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 - [ ] Halaman about us.
 - [ ] Halaman contact us.
 - [ ] Halaman admin.
-  - [ ] Halaman product (findAll, create, update).
+  - [x] Halaman product (findAll, create, update).
   - [ ] Halaman order (confirm).
   - [ ] Halaman logout.

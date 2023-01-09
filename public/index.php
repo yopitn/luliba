@@ -4,6 +4,8 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Controller\AdminController;
 use App\Controller\AdminProductController;
+use App\Controller\AdminProductNewController;
+use App\Controller\AdminProductUpdateController;
 use App\Controller\HomeController;
 use App\Controller\LoginController;
 use App\Controller\SignupController;
@@ -20,5 +22,7 @@ Routes::post("/signup", LoginMiddleware::class . "::isNotLogin", SignupControlle
 
 Routes::get("/admin", null, AdminController::class . "::get");
 Routes::get("/admin/products", null, AdminProductController::class . "::get");
+Routes::get("/admin/product/new", null, AdminProductNewController::class . "::get");
+Routes::get("/admin/product/id", null, AdminProductUpdateController::class . "::get");
 
 Routes::run();

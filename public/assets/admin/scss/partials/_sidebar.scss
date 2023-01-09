@@ -7,7 +7,7 @@
 
   &__container {
     position: sticky;
-    top: $headerHeight;
+    top: calc($headerHeight - 8px);
   }
 
   &__inner {
@@ -52,7 +52,7 @@
       position: relative;
     }
 
-    &[data-text="bottom"] {
+    &[data-text="footer"] {
       position: absolute;
       bottom: 0;
       background-color: #161620;

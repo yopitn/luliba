@@ -9,7 +9,9 @@ class AdminProductController
     public function get()
     {
         View::render("admin/products", [
-            "title" => "Admin - Products"
+            "title" => "Admin - Products",
+            "isHomepage" => true,
+            "isEditor" => false
         ]);
     }
 }

@@ -108,7 +108,7 @@
       background: $whiteColor;
       font-size: 15px;
       outline: none;
-      border: 1px solid $borderColor;
+      border: none;
       border-radius: 6px;
 
       @include breakpoint-max(sm) {
