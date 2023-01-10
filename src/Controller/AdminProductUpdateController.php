@@ -6,7 +6,6 @@ use App\Config\Database;
 use App\Core\View;
 use App\Model\ProductModel;
 use App\Service\ProductService;
-use App\Utils\UploadImage;
 use App\Utils\ValidationException;
 
 class AdminProductUpdateController

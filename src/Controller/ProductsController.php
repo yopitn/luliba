@@ -7,7 +7,7 @@ use App\Core\View;
 use App\Service\ProductService;
 use App\Service\SessionService;
 
-class HomeController
+class ProductsController
 {
     protected ProductService $products;
 
@@ -17,13 +17,14 @@ class HomeController
         $this->products = new ProductService($connection);
     }
 
+
     public function get()
     {
         $decode = SessionService::getSession();
         $role = $decode ? $decode->role : null;
 
-        View::render("blog/home", [
-            "title" => "Luliba",
+        View::render("blog/products", [
+            "title" => "Luliba - Products",
             "role" => $role,
             "products" => $this->products->findAll()
         ]);

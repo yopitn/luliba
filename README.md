@@ -9,7 +9,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 **Public**
 
 - [x] Halaman home.
-- [ ] Halaman products.
+- [x] Halaman products.
 - [ ] Halaman product.
 - [ ] Halaman search.
 - [ ] Halaman about us.
@@ -20,7 +20,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 **Customer**
 
 - [x] Halaman home.
-- [ ] Halaman products.
+- [x] Halaman products.
 - [ ] Halaman product.
 - [ ] Halaman order.
 - [ ] Halaman cart.
@@ -33,7 +33,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 **Admin**
 
 - [x] Halaman home.
-- [ ] Halaman products.
+- [x] Halaman products.
 - [ ] Halaman product.
 - [ ] Halaman order.
 - [ ] Halaman cart.
