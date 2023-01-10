@@ -4,6 +4,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Controller\AdminController;
 use App\Controller\AdminProductController;
+use App\Controller\AdminProductDeleteController;
 use App\Controller\AdminProductNewController;
 use App\Controller\AdminProductUpdateController;
 use App\Controller\HomeController;
@@ -27,6 +28,7 @@ Routes::get("/admin/product/new", LoginMiddleware::class . "::isAdmin", AdminPro
 Routes::post("/admin/product/new", LoginMiddleware::class . "::isAdmin", AdminProductNewController::class . "::post");
 Routes::get("/admin/product/([0-9a-zA-Z]*)", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::get");
 Routes::post("/admin/product/([0-9a-zA-Z]*)", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::post");
+Routes::get("/admin/product/delete/([0-9a-zA-Z]*)", LoginMiddleware::class . "::isAdmin", AdminProductDeleteController::class . "::get");
 
 Routes::get("/logout", LoginMiddleware::class . "::isCustomer", LogoutController::class . "::get");
 Routes::get("/admin/logout", LoginMiddleware::class . "::isAdmin", LogoutController::class . "::get");

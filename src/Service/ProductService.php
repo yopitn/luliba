@@ -175,4 +175,13 @@ class ProductService
             throw $error;
         }
     }
+
+    public function delete(int $id) {
+        try {
+            $statement = $this->connection->prepare("DELETE FROM products WHERE id = ?");
+            $statement->execute([$id]);
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
 }
