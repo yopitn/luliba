@@ -52,8 +52,14 @@
                         <div class="image" style="background-image: url('/content/images<?= $product->image ?>');"></div>
                       </div>
 
-                      <div class="products__title">
-                        <span class="title"><?= $product->name ?></span>
+                      <div class="products__info">
+                        <div class="products__title">
+                          <span class="title"><?= $product->name ?></span>
+                        </div>
+
+                        <div class="products__description">
+                          <span class="text"><?= $product->description ?></span>
+                        </div>
                       </div>
                     </a>
 
@@ -62,7 +68,7 @@
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__price">
-                      <span class="price">$<?= $product->price ?></span>
+                      <span class="price">Rp. 100.000</span>
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__stock">

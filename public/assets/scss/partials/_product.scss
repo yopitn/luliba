@@ -1,0 +1,104 @@
+.product {
+  padding-top: 50px;
+  padding-bottom: 60px;
+
+  .container {
+    max-width: 1000px;
+  }
+
+  &__content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  &__left {
+    flex: 0 0 40%;
+    max-width: 40%;
+  }
+
+  &__right {
+    flex: 0 0 56%;
+    max-width: 56%;
+  }
+
+  &__breadcrumb {
+    font-size: 14px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color: $textColor;
+    margin-bottom: 30px;
+    padding-left: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    opacity: 0.9;
+
+    > * {
+      display: inline;
+
+      &:not(:last-child)::after {
+        content: "/";
+      }
+    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 480px;
+    height: 100%;
+    max-height: 480ppx;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  &__title {
+    font-size: 26px;
+    font-weight: 800;
+    padding-top: 10px;
+    line-height: 1.4em;
+  }
+
+  &__description {
+    font-size: 15px;
+    opacity: 0.9;
+    line-height: 1.8em;
+
+    p {
+      margin: 1.4rem 0;
+    }
+  }
+
+  &__price {
+    font-size: 24px;
+    font-weight: 800;
+    margin: 1.2rem 0;
+  }
+
+  &__stock {
+    font-size: 15px;
+    font-weight: 500;
+    opacity: 0.9;
+    margin: 1.2rem 0;
+
+    &::before {
+      content: "Stock:";
+      text-transform: uppercase;
+      margin-right: 2px;
+      opacity: 0.7;
+    }
+  }
+
+  &__action {
+    margin-top: 1.7rem;
+
+    .btn {
+      padding: 14px 24px;
+    }
+  }
+}

@@ -7,25 +7,26 @@ use App\Core\View;
 use App\Service\ProductService;
 use App\Service\SessionService;
 
-class ProductsController
+class ProductController
 {
-    protected ProductService $products;
+    protected ProductService $product;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->products = new ProductService($connection);
+        $this->product = new ProductService($connection);
     }
 
-    public function get()
+    public function get($slug)
     {
+        $product = $this->product->findBySlug($slug);
         $decode = SessionService::getSession();
         $role = $decode ? $decode->role : null;
 
-        View::render("blog/products", [
-            "title" => "Luliba - Products",
+        View::render("blog/product", [
+            "title" => $product->name . " - Luliba",
             "role" => $role,
-            "products" => $this->products->findAll()
+            "product" => $product
         ]);
     }
 }

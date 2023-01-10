@@ -7,14 +7,14 @@ use App\Core\View;
 use App\Service\ProductService;
 use App\Service\SessionService;
 
-class ProductsController
+class SearchController
 {
-    protected ProductService $products;
+    protected $search;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->products = new ProductService($connection);
+        $this->search = new ProductService($connection);
     }
 
     public function get()
@@ -22,10 +22,10 @@ class ProductsController
         $decode = SessionService::getSession();
         $role = $decode ? $decode->role : null;
 
-        View::render("blog/products", [
-            "title" => "Luliba - Products",
+        View::render("blog/search", [
+            "title" => "Search: ",
             "role" => $role,
-            "products" => $this->products->findAll()
+            "products" => $this->search->findLike($_GET["q"])
         ]);
     }
 }

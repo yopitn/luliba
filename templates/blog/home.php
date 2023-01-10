@@ -32,7 +32,7 @@
           <span class="title">Products</span>
         </h2>
 
-        <div class="products__category">
+        <div class="products__header-category">
           <ul>
             <li>
               <a href="#" class="link">
@@ -60,7 +60,7 @@
           </ul>
         </div>
 
-        <div class="products__search">
+        <div class="products__header-search">
           <form action="/search" method="get">
             <input autocomplete="off" id="search" minlength="3" name="q" placeholder="Search for products" required="required" type="search">
 
@@ -93,12 +93,16 @@
               </div>
 
               <h3 class="products__title">
-                <a href="/product/<?= $product->slug ?>" class="title"><?= $product->name ?></a>
+                <a href="/product/<?= $product->slug ?>" class="title">FortKlass Coach Misaki Jaket Coach Pria Outwear Unisex Parasut Jake - NAVY, L</a>
               </h3>
+
+              <div class="products__category">
+                <span class="category">Women</span>
+              </div>
 
               <div class="products__footer">
                 <div class="products__price">
-                  <span class="text">$<?= $product->price ?></span>
+                  <span class="text">Rp. 110.000</span>
                 </div>
 
                 <div class="products__cart" data-method="cart">

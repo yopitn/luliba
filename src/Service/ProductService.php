@@ -80,7 +80,7 @@ class ProductService
             $statement->execute();
             $results = $statement->fetchAll();
 
-            $prodcuts = [];
+            $products = [];
 
             foreach ($results as $row) {
                 $model = new ProductModel();
@@ -95,10 +95,10 @@ class ProductService
                 $model->updated_at = $row["updated_at"];
                 $model->published_at = $row["published_at"];
 
-                $prodcuts[] = $model;
+                $products[] = $model;
             }
 
-            return $prodcuts;
+            return $products;
         } catch (\Exception $error) {
             throw $error;
         }
@@ -143,7 +143,91 @@ class ProductService
         }
     }
 
-    public function update(ProductModel $model ,int $id) {
+    public function findBySlug(string $slug)
+    {
+        try {
+            $statement = $this->connection->prepare(<<<SQL
+                SELECT
+                    id, 
+                    name, 
+                    description, 
+                    category,
+                    image, 
+                    slug, 
+                    price, 
+                    stock, 
+                    updated_at, 
+                    published_at
+                FROM products WHERE slug = ?
+            SQL);
+
+            $statement->execute([$slug]);
+            $row = $statement->fetch();
+
+            $model = new ProductModel();
+            $model->id = $row["id"];
+            $model->name = $row["name"];
+            $model->description = $row["description"];
+            $model->category = $row["category"];
+            $model->image = $row["image"];
+            $model->slug = $row["slug"];
+            $model->price = $row["price"];
+            $model->stock = $row["stock"];
+            $model->updated_at = $row["updated_at"];
+            $model->published_at = $row["published_at"];
+
+            return $model;
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
+
+    public function findLike(string $query): array {
+        try {
+            $statement = $this->connection->prepare(<<<SQL
+                SELECT
+                    id, 
+                    name, 
+                    description, 
+                    category,
+                    image, 
+                    slug, 
+                    price, 
+                    stock, 
+                    updated_at, 
+                    published_at
+                FROM products WHERE name LIKE '%$query%'
+            SQL);
+
+            $statement->execute();
+            $results = $statement->fetchAll();
+
+            $products = [];
+
+            foreach ($results as $row) {
+                $model = new ProductModel();
+                $model->id = $row["id"];
+                $model->name = $row["name"];
+                $model->description = $row["description"];
+                $model->category = $row["category"];
+                $model->image = $row["image"];
+                $model->slug = $row["slug"];
+                $model->price = $row["price"];
+                $model->stock = $row["stock"];
+                $model->updated_at = $row["updated_at"];
+                $model->published_at = $row["published_at"];
+
+                $products[] = $model;
+            }
+
+            return $products;
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
+
+    public function update(ProductModel $model, int $id)
+    {
         try {
             $name = $model->name;
             $description = $model->description;
@@ -176,7 +260,8 @@ class ProductService
         }
     }
 
-    public function delete(int $id) {
+    public function delete(int $id)
+    {
         try {
             $statement = $this->connection->prepare("DELETE FROM products WHERE id = ?");
             $statement->execute([$id]);

@@ -10,38 +10,22 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 - [x] Halaman home.
 - [x] Halaman products.
-- [ ] Halaman product.
-- [ ] Halaman search.
-- [ ] Halaman about us.
-- [ ] Halaman contact us.
+- [x] Halaman product.
+- [x] Halaman search.
 - [x] Halaman login.
 - [x] Halaman sign up.
 
 **Customer**
 
-- [x] Halaman home.
-- [x] Halaman products.
-- [ ] Halaman product.
 - [ ] Halaman order.
 - [ ] Halaman cart.
-- [ ] Halaman search.
-- [ ] Halaman profile/setting.
-- [ ] Halaman about us.
-- [ ] Halaman contact us.
+- [ ] Halaman account/setting.
 - [x] Logic customer logout.
 
 **Admin**
 
-- [x] Halaman home.
-- [x] Halaman products.
-- [ ] Halaman product.
-- [ ] Halaman order.
-- [ ] Halaman cart.
-- [ ] Halaman search.
-- [ ] Halaman profile/setting.
-- [ ] Halaman about us.
-- [ ] Halaman contact us.
-- [ ] Halaman admin.
-  - [x] Halaman product (findAll, create, update).
-  - [ ] Halaman order (confirm).
-  - [x] Logic admin logout.
+- [x] Halaman product (findAll, create, update).
+- [ ] Halaman order (confirm).
+- [ ] Halaman account.
+- [ ] Halaman setting.
+- [x] Logic admin logout.
