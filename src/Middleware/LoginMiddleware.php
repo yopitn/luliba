@@ -2,6 +2,7 @@
 
 namespace App\Middleware;
 
+use App\Config\Database;
 use App\Service\SessionService;
 
 class LoginMiddleware
@@ -44,7 +45,7 @@ class LoginMiddleware
 
     public static function isNotLogin()
     {
-        $login = SessionService::getSessionBool();
+        $login = SessionService::getSession();
 
         if ($login) {
             header("Location: /");

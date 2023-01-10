@@ -25,7 +25,7 @@ class SignupController
         ]);
     }
 
-    public function post()
+    public function post(): void
     {
         $model = new UserModel();
         $model->name = $_POST["name"];

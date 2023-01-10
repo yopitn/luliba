@@ -6,16 +6,6 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 ## Goals
 
-**Cores**
-
-- [x] Menghubungkan ke Database (PDO).
-- [x] Membuat logic Routes (get, post, put, delete).
-- [x] Membuat logic Views (render).
-- [x] Membuat logic login dan signup.
-- [x] Autentikasi menggunakan JWT.
-- [x] Membuat middlewares.
-- [ ] Membuat templates (front end).
-
 **Public**
 
 - [x] Halaman home.

@@ -7,17 +7,10 @@
         <div class="main__title">
           <span class="title">Add product</span>
         </div>
-        <form class="main__form" method="post">
+        <form class="main__form" method="post" enctype="multipart/form-data">
           <div class="main__form-group">
             <label for="image">Image</label>
-            <input class="hidden" type="file" name="image" id="image">
-            <div class="editor__upload">
-              <span class="title">Select File here</span>
-
-              <span class="text">Files Supported: PNG, JPG, WEBP</span>
-
-              <label class="btn btn-link" for="image">Upload image</label>
-            </div>
+            <input type="file" name="image" id="image">
           </div>
 
           <div class="main__form-group">

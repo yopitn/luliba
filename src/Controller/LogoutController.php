@@ -16,7 +16,6 @@ class LogoutController
         $this->service = new SessionService($connection);
     }
 
-
     public function get(): void
     {
         $session = SessionService::getSession();

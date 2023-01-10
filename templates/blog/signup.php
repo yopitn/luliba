@@ -32,7 +32,7 @@
 
         <?php if (isset($model["message"])) { ?>
           <div class="form__message">
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+            <p><?=$model["message"] ?></p>
           </div>
         <?php } ?>
 

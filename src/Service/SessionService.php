@@ -20,11 +20,10 @@ class SessionService
     public function create(UserModel $model): UserModel
     {
         try {
-            $email = $model->email;
-            $password = $model->password;
-
             $statement = $this->connection->prepare("SELECT id, name, email, password, role FROM users WHERE email = ?");
-            $statement->execute([$email]);
+            $statement->execute([
+                $model->email
+            ]);
 
             $row = $statement->fetch();
 
@@ -32,7 +31,7 @@ class SessionService
                 throw new ValidationException("Email or Password is incorrect.");
             }
 
-            $match = password_verify($password, $row["password"]);
+            $match = password_verify($model->password, $row["password"]);
 
             if (!$match) {
                 throw new ValidationException("Email or Password is incorrect.");
@@ -53,12 +52,17 @@ class SessionService
 
             setcookie("luliba-session", $jwt, $options);
 
-            $session = $this->connection->prepare("INSERT INTO session (user_id, session) VALUES (?, ?)");
-            $session->execute([$row["id"], $jwt]);
+            $statement = $this->connection->prepare("SELECT user_id, session FROM session WHERE user_id = ?");
+            $statement->execute([$row["id"]]);
 
-            $model = new UserModel();
-            $model->id = $row["id"];
-            $model->name = $row["name"];
+            if ($statement->fetch()) {
+                $statement = $this->connection->prepare("UPDATE session SET session = ? WHERE user_id = ?");
+                $statement->execute([$jwt, $row["id"]]);
+            } else {
+                $statement = $this->connection->prepare("INSERT INTO session (user_id, session) VALUES (?, ?)");
+                $statement->execute([$row["id"], $jwt]);
+            }
+
             $model->role = $row["role"];
 
             return $model;
@@ -82,30 +86,24 @@ class SessionService
     public static function getSession()
     {
         if (isset($_COOKIE["luliba-session"])) {
+            // $session = $this->connection->prepare("SELECT session FROM session WHERE session = ?");
+            // $session->execute([$_COOKIE["luliba-session"]]);
+
+            // if ($session->fetch()) {
+            //     $jwt = $_COOKIE["luliba-session"];
+
+            //     $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
+
+            //     return $decode;
+            // }
+
             $jwt = $_COOKIE["luliba-session"];
 
             $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
 
             return $decode;
         }
-    }
 
-    public static function getSessionBool(): bool
-    {
-        if (isset($_COOKIE["luliba-session"])) {
-            $jwt = $_COOKIE["luliba-session"];
-
-            try {
-                $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
-
-                if ($decode) {
-                    return true;
-                }
-            } catch (\Exception $error) {
-                return false;
-            }
-        }
-
-        return false;
+        return null;
     }
 }
