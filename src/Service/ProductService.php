@@ -4,7 +4,6 @@ namespace App\Service;
 
 use App\Model\ProductModel;
 use App\Utils\Slugify;
-use App\Utils\UploadImages;
 
 class ProductService
 {
@@ -100,6 +99,78 @@ class ProductService
             }
 
             return $prodcuts;
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
+
+    public function findById(int $id)
+    {
+        try {
+            $statement = $this->connection->prepare(<<<SQL
+                SELECT
+                    id, 
+                    name, 
+                    description, 
+                    category,
+                    image, 
+                    slug, 
+                    price, 
+                    stock, 
+                    updated_at, 
+                    published_at
+                FROM products WHERE id = ?
+            SQL);
+
+            $statement->execute([$id]);
+            $row = $statement->fetch();
+
+            $model = new ProductModel();
+            $model->id = $row["id"];
+            $model->name = $row["name"];
+            $model->description = $row["description"];
+            $model->category = $row["category"];
+            $model->image = $row["image"];
+            $model->slug = $row["slug"];
+            $model->price = $row["price"];
+            $model->stock = $row["stock"];
+            $model->updated_at = $row["updated_at"];
+            $model->published_at = $row["published_at"];
+
+            return $model;
+        } catch (\Exception $error) {
+            throw $error;
+        }
+    }
+
+    public function update(ProductModel $model ,int $id) {
+        try {
+            $name = $model->name;
+            $description = $model->description;
+            $category = $model->category;
+            $price = $model->price;
+            $stock = $model->stock;
+            $updated_at = date("y-m-d H:i:s");
+
+            $statement = $this->connection->prepare(<<<SQL
+            UPDATE products SET
+                name = ?, 
+                description = ?, 
+                category = ?,
+                price = ?, 
+                stock = ?, 
+                updated_at = ?
+                WHERE id = ?
+            SQL);
+            $statement->execute([
+                $name,
+                $description,
+                $category,
+                $price,
+                $stock,
+                $updated_at,
+                $id
+            ]);
         } catch (\Exception $error) {
             throw $error;
         }

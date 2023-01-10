@@ -112,9 +112,14 @@
       cursor: pointer;
       user-select: none;
 
+      &:hover {
+        opacity: 1;
+      }
+
       svg {
-        width: 30px;
-        height: 30px;
+        width: 26px;
+        height: 26px;
+        fill: #dc3545;
       }
     }
   }

@@ -25,8 +25,8 @@ Routes::get("/admin", LoginMiddleware::class . "::isAdmin", AdminController::cla
 Routes::get("/admin/products", LoginMiddleware::class . "::isAdmin", AdminProductController::class . "::get");
 Routes::get("/admin/product/new", LoginMiddleware::class . "::isAdmin", AdminProductNewController::class . "::get");
 Routes::post("/admin/product/new", LoginMiddleware::class . "::isAdmin", AdminProductNewController::class . "::post");
-Routes::get("/admin/product/id", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::get");
-// Routes::get("/admin/product/id", LoginMiddleware::class . "::isAdmin", AdminProductNewController::class . "::post");
+Routes::get("/admin/product/([0-9a-zA-Z]*)", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::get");
+Routes::post("/admin/product/([0-9a-zA-Z]*)", LoginMiddleware::class . "::isAdmin", AdminProductUpdateController::class . "::post");
 
 Routes::get("/logout", LoginMiddleware::class . "::isCustomer", LogoutController::class . "::get");
 Routes::get("/admin/logout", LoginMiddleware::class . "::isAdmin", LogoutController::class . "::get");

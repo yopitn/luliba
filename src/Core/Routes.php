@@ -73,13 +73,17 @@ class Routes
         }
 
         foreach (self::$routes as $route) {
-            if ($route["path"] === $path && $route["method"] === $method) {
+            $pattern = "#^" . $route["path"] . "$#";
+            
+            if (preg_match($pattern, $path, $variables) && $route["method"] === $method) {
                 $middleware = $route["middleware"];
                 $handler = $route["handler"];
                 $callback = self::handler($handler);
 
+                array_shift($variables);
+
                 if (!$middleware) {
-                    call_user_func_array($callback, []);
+                    call_user_func_array($callback, $variables);
 
                     return;
                 }
@@ -87,7 +91,7 @@ class Routes
                 $next = self::middleware($middleware);
 
                 if (!$next) {
-                    call_user_func_array($callback, []);
+                    call_user_func_array($callback, $variables);
 
                     return;
                 }
