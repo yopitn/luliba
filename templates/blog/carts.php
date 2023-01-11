@@ -53,13 +53,20 @@
                 </div>
 
                 <div class="carts__submit">
-                  <a href="#" class="link btn btn-secondary">
+                  <a href="/account/order/add/<?= $cart->id ?>" class="link btn btn-secondary">
                     <span class="text">Order now</span>
                   </a>
                 </div>
               </div>
             </div>
           <?php } ?>
+        <?php } else { ?>
+          <div class="carts__empty">
+            <div class="text">It looks like you haven't added any products to your cart yet.</div>
+            <a href="/products" class="btn btn-secondary">
+              <span class="name">Find products now</span>
+            </a>
+          </div>
         <?php } ?>
       </main>
     </div>

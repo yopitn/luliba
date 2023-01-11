@@ -1,4 +1,4 @@
-.carts {
+.orders {
   &__item {
     padding: 20px;
     background-color: $contentBackground;
@@ -54,26 +54,32 @@
   &__action {
     display: flex;
     align-items: center;
-    justify-content: end;
+    justify-content: space-between;
 
     > * {
       display: inline-flex;
       align-items: center;
     }
-
-    > *:not(:last-child)::after {
-      content: "|";
-      margin: 0 10px;
-      padding: 0 5px;
-      opacity: 0.7;
-    }
   }
 
-  &__delete {
-    svg {
-      width: 20px;
-      height: 20px;
-      fill: #dc3545;
+  &__status {
+    > * {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+
+    .pending {
+      color: #212529;
+      background-color: #ffc107;
+    }
+
+    .success {
+      color: $whiteColor;
+      background-color: #218838;
     }
   }
 

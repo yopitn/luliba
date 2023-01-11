@@ -38,7 +38,7 @@ class CartService
         try {
             $statement = $this->connection->prepare(<<<SQL
                 SELECT 
-                    products.id, 
+                    carts.id, 
                     products.name, 
                     products.image, 
                     products.price
@@ -69,10 +69,11 @@ class CartService
         }
     }
 
-    public function destroy(int $id) {
+    public function destroy(int $cart_id)
+    {
         try {
-            $statement = $this->connection->prepare("DELETE FROM carts WHERE product_id = ?");
-            $statement->execute([$id]);
+            $statement = $this->connection->prepare("DELETE FROM carts WHERE id = ?");
+            $statement->execute([$cart_id]);
         } catch (\Exception $error) {
             throw $error;
         }

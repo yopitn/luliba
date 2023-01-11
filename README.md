@@ -17,7 +17,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 **Customer**
 
-- [ ] Halaman orders.
+- [x] Halaman orders.
 - [x] Halaman carts.
 - [ ] Halaman account.
 - [x] Logic customer logout.
@@ -25,7 +25,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 **Admin**
 
 - [x] Halaman products (findAll, create, update).
-- [ ] Halaman orders (confirm).
+- [x] Halaman orders (confirm).
 - [ ] Halaman account.
 - [ ] Halaman setting.
 - [x] Logic admin logout.

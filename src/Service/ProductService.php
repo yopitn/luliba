@@ -75,6 +75,7 @@ class ProductService
                     updated_at, 
                     published_at
                 FROM products
+                ORDER BY published_at DESC
             SQL);
 
             $statement->execute();
@@ -182,7 +183,8 @@ class ProductService
         }
     }
 
-    public function findLike(string $query): array {
+    public function findLike(string $query): array
+    {
         try {
             $statement = $this->connection->prepare(<<<SQL
                 SELECT

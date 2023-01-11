@@ -1,0 +1,93 @@
+.orders {
+  @include breakpoint-min(lg) {
+    .container {
+      padding-left: 25px;
+    }
+  }
+
+  .main__form {
+    input {
+      padding: 14px 46px 14px 14px;
+    }
+  }
+  .main__table {
+    &-header {
+      > * {
+        max-width: 20.66%;
+        flex: 0 0 20.66%;
+      }
+
+      > *:first-child {
+        max-width: 10%;
+        flex: 0 0 10%;
+      }
+
+      > *:nth-child(2) {
+        max-width: 28%;
+        flex: 0 0 28%;
+      }
+
+      > *:not(:last-child) {
+        padding-left: 10px;
+      }
+
+      > *:last-child {
+        text-align: center;
+      }
+    }
+
+    &-item {
+      > * {
+        max-width: 20.66%;
+        flex: 0 0 20.66%;
+      }
+
+      > *:first-child {
+        max-width: 10%;
+        flex: 0 0 10%;
+      }
+
+      > *:nth-child(2) {
+        max-width: 28%;
+        flex: 0 0 28%;
+      }
+
+      > *:last-child {
+        display: inline-flex;
+        justify-content: center;
+      }
+    }
+
+    &-empty {
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+      padding: 20px 0;
+    }
+  }
+
+  &__id,
+  &__customer,
+  &__total {
+    span {
+      font-size: 15px;
+      font-weight: 800;
+      opacity: 0.9;
+    }
+  }
+
+  &__status {
+    span {
+      font-size: 15px;
+      font-weight: 500;
+
+      &.pending {
+        color: #ffc107;
+      }
+
+      &.success {
+        color: #218838;
+      }
+    }
+  }
+}
