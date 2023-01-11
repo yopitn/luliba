@@ -17,7 +17,7 @@ class AdminProductDeleteController
 
     public function get(int $id)
     {
-        $this->service->delete($id);
+        $this->service->destroy($id);
         header("Location: /admin/products");
         exit();
     }

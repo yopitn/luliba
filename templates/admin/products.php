@@ -68,7 +68,7 @@
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__price">
-                      <span class="price">Rp. 100.000</span>
+                      <span class="price">Rp. <?= $product->price ?></span>
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__stock">

@@ -5,7 +5,7 @@ CREATE TABLE `products` (
   `category` text DEFAULT NULL,
   `image` text DEFAULT NULL,
   `slug` varchar(255) NOT NULL,
-  `price` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
   `stock` int(11) NOT NULL,
   `created_at` datetime NOT NULL,
   `updated_at` datetime DEFAULT NULL,

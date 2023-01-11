@@ -260,7 +260,7 @@ class ProductService
         }
     }
 
-    public function delete(int $id)
+    public function destroy(int $id)
     {
         try {
             $statement = $this->connection->prepare("DELETE FROM products WHERE id = ?");

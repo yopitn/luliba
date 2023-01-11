@@ -17,15 +17,15 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 **Customer**
 
-- [ ] Halaman order.
-- [ ] Halaman cart.
-- [ ] Halaman account/setting.
+- [ ] Halaman orders.
+- [x] Halaman carts.
+- [ ] Halaman account.
 - [x] Logic customer logout.
 
 **Admin**
 
-- [x] Halaman product (findAll, create, update).
-- [ ] Halaman order (confirm).
+- [x] Halaman products (findAll, create, update).
+- [ ] Halaman orders (confirm).
 - [ ] Halaman account.
 - [ ] Halaman setting.
 - [x] Logic admin logout.

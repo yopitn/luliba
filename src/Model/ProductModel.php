@@ -10,7 +10,7 @@ class ProductModel
     public ?string $category = null;
     public ?string $image = null;
     public ?string $slug = null;
-    public ?int $price = null;
+    public ?string $price = null;
     public ?int $stock = null;
     public ?string $updated_at = null;
     public ?string $published_at = null;

@@ -1,0 +1,89 @@
+.account {
+  padding-top: 30px;
+  padding-bottom: 30px;
+
+  &__breadcrumb {
+    font-size: 14px;
+    text-transform: capitalize;
+    color: $textColor;
+    margin-bottom: 25px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    > * {
+      display: inline;
+
+      &:not(:last-child)::after {
+        content: "/";
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .sidebar {
+    position: relative;
+    width: $sidebarWidth;
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      background-color: $contentBackground;
+      border-radius: 6px;
+    }
+
+    .link {
+      position: relative;
+      display: flex;
+      align-items: center;
+      padding: 14px 8px;
+      background-color: transparent;
+      color: #7f8295;
+      font-size: 15px;
+      border-radius: 6px;
+      transition: 0.1s ease;
+      cursor: pointer;
+      user-select: none;
+
+      > * {
+        margin: 0 5px;
+      }
+
+      .name {
+        display: block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      svg {
+        flex-shrink: 0;
+        width: 20px;
+        height: 20px;
+        transition: 0.1s ease;
+        opacity: 0.9;
+      }
+
+      &:hover {
+        opacity: 1;
+        background-color: #f5f7f9;
+        color: $titleColor;
+
+        svg {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .main {
+    padding: 0;
+    width: calc(100% - ($sidebarWidth + 30px));
+  }
+}

@@ -15,11 +15,11 @@ $product = $model["product"];
 
       <div class="item">
         <a href="#" class="link">
-          <span class="name">Women</span>
+          <span class="name"><?= $product->category ?></span>
         </a>
       </div>
 
-      <div aria-current="page">FortKlass Coach Misaki Jaket Coach Pria Outwear Unisex Parasut Jake - NAVY, L</div>
+      <div aria-current="page"><?= $product->name ?></div>
     </div>
 
     <div class="product__content">
@@ -29,15 +29,15 @@ $product = $model["product"];
 
       <div class="product__right">
         <div class="product__title">
-          <span class="title">FortKlass Coach Misaki Jaket Coach Pria Outwear Unisex Parasut Jake - NAVY, L</span>
+          <span class="title"><?= $product->name ?></span>
         </div>
 
         <div class="product__description">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt enim cum at, incidunt voluptatibus possimus dolore eum officia ea quos ad sed accusantium repellat quas eveniet aliquid vel rem temporibus!</p>
+          <p><?= $product->description ?></p>
         </div>
 
         <div class="product__price">
-          <span class="price">Rp. 110.000</span>
+          <span class="price">Rp. <?= $product->price ?></span>
         </div>
 
         <div class="product__stock">
@@ -45,9 +45,9 @@ $product = $model["product"];
         </div>
 
         <div class="product__action">
-          <span class="btn btn-secondary" data-method="addProduct">
-            Add to cart
-          </span>
+          <a class="link btn btn-secondary" href="/account/cart/add/<?= $product->id ?>">
+            <span class="text">Add to cart</span>
+          </a>
         </div>
       </div>
     </div>
