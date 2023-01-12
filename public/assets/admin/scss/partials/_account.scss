@@ -1,0 +1,21 @@
+.account {
+  .main__form-group {
+    .link {
+      display: block;
+      width: 100%;
+      text-align: right;
+      margin-top: 10px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+
+  .main__form-button {
+    display: flex;
+    justify-content: end;
+
+    > button {
+      padding: 12px 20px;
+    }
+  }
+}

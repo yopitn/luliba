@@ -3,8 +3,10 @@
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use App\Controller\AccountController;
+use App\Controller\AdminAccountController;
 use App\Controller\AdminController;
 use App\Controller\AdminOrderController;
+use App\Controller\AdminPasswordController;
 use App\Controller\AdminProductController;
 use App\Controller\AdminProductDeleteController;
 use App\Controller\AdminProductNewController;
@@ -60,6 +62,11 @@ Routes::get("/admin/product/delete/([0-9a-zA-Z-]*)", LoginMiddleware::class . ":
 
 Routes::get("/admin/orders", LoginMiddleware::class . "::isAdmin", AdminOrderController::class . "::get");
 Routes::get("/admin/order/confirm/([0-9a-zA-Z-]*)", LoginMiddleware::class . "::isAdmin", AdminOrderController::class . "::confirm");
+
+Routes::get("/admin/account", LoginMiddleware::class . "::isAdmin", AdminAccountController::class . "::get");
+Routes::post("/admin/account", LoginMiddleware::class . "::isAdmin", AdminAccountController::class . "::post");
+Routes::get("/admin/account/password", LoginMiddleware::class . "::isAdmin", AdminPasswordController::class . "::get");
+Routes::post("/admin/account/password", LoginMiddleware::class . "::isAdmin", AdminPasswordController::class . "::post");
 
 Routes::get("/admin/logout", LoginMiddleware::class . "::isAdmin", LogoutController::class . "::get");
 

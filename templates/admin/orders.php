@@ -8,8 +8,8 @@
       <div class="main__inner">
         <div class="main__header">
           <div class="main__search">
-            <form class="main__form" action="/admin/products/search" method="get">
-              <input autocomplete="off" id="search" minlength="3" name="q" placeholder="Search for products" required="required" type="search">
+            <form class="main__form" action="/admin/orders/search" method="get">
+              <input autocomplete="off" id="search" minlength="3" name="q" placeholder="Search for orders" required="required" type="search">
 
               <button type="submit">
                 <svg class="line" viewBox="0 0 24 24">
@@ -69,6 +69,36 @@
                   <span class="text">No orders found</span>
                 </div>
               <?php } ?>
+            </div>
+
+            <div class="main__footer">
+              <div class="main__footer-pagination">
+                <ul>
+                  <li>
+                    <a href="#" class="link active">
+                      <span class="num">1</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="link">
+                      <span class="num">2</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="link">
+                      <span class="num">3</span>
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="#" class="link">
+                      <span class="num">10</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

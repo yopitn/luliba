@@ -52,7 +52,7 @@ if ($model["user"]) {
 
             <div class="account__form-group">
               <label for="email">Email</label>
-              <input type="text" name="email" id="email" placeholder="email@example.com" value="<?= $email ?>" required>
+              <input type="email" name="email" id="email" placeholder="email@example.com" value="<?= $email ?>" required>
             </div>
 
             <div class="account__form-group">
