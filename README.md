@@ -19,7 +19,7 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 - [x] Halaman orders.
 - [x] Halaman carts.
-- [ ] Halaman account.
+- [x] Halaman account.
 - [x] Logic customer logout.
 
 **Admin**
