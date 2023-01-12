@@ -4,13 +4,13 @@
   <div class="container">
     <div class="account__breadcrumb">
       <div class="item">
-        <a href="#" class="link">
+        <a href="/" class="link">
           <span class="name">Home</span>
         </a>
       </div>
 
       <div class="item">
-        <a href="#" class="link">
+        <a href="/account" class="link">
           <span class="name">Account</span>
         </a>
       </div>

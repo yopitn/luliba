@@ -7,9 +7,18 @@ use App\Service\SessionService;
 
 class LoginMiddleware
 {
-    public static function isAdmin()
+    protected SessionService $session;
+
+    public function __construct()
     {
-        $login = SessionService::getSession();
+        $connection = Database::getConnection();
+        $this->session = new SessionService($connection);
+    }
+
+
+    public function isAdmin()
+    {
+        $login = $this->session->getSession();
         $role = $login->role;
 
         if ($role !== null && $role === "admin") {
@@ -25,9 +34,9 @@ class LoginMiddleware
         exit();
     }
 
-    public static function isCustomer()
+    public function isCustomer()
     {
-        $login = SessionService::getSession();
+        $login = $this->session->getSession();
         $role = $login->role;
 
         if ($role !== null && $role === "customer") {
@@ -43,9 +52,9 @@ class LoginMiddleware
         exit();
     }
 
-    public static function isNotLogin()
+    public function isNotLogin()
     {
-        $login = SessionService::getSession();
+        $login = $this->session->getSession();
 
         if ($login) {
             header("Location: /");

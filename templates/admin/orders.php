@@ -66,7 +66,7 @@
                 <?php } ?>
               <?php } else { ?>
                 <div class="main__table-empty">
-                  <span class="text">No products found</span>
+                  <span class="text">No orders found</span>
                 </div>
               <?php } ?>
             </div>

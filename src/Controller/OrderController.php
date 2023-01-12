@@ -11,16 +11,18 @@ use App\Service\SessionService;
 class OrderController
 {
     protected OrderService $orders;
+    protected SessionService $session;
 
     public function __construct()
     {
         $connection = Database::getConnection();
         $this->orders = new OrderService($connection);
+        $this->session = new SessionService($connection);
     }
 
     public function get()
     {
-        $decode = SessionService::getSession();
+        $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
 
         View::render("blog/orders", [
@@ -32,7 +34,7 @@ class OrderController
 
     public function add(int $cart_id)
     {
-        $decode = SessionService::getSession();
+        $decode = $this->session->getSession();
 
         $model = new OrderModel();
         $model->user_id = $decode->id;

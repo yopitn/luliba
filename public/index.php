@@ -2,6 +2,7 @@
 
 require_once __DIR__ . "/../vendor/autoload.php";
 
+use App\Controller\AccountController;
 use App\Controller\AdminController;
 use App\Controller\AdminOrderController;
 use App\Controller\AdminProductController;
@@ -13,6 +14,7 @@ use App\Controller\HomeController;
 use App\Controller\LoginController;
 use App\Controller\LogoutController;
 use App\Controller\OrderController;
+use App\Controller\PasswordController;
 use App\Controller\ProductController;
 use App\Controller\ProductsController;
 use App\Controller\SearchController;
@@ -30,6 +32,12 @@ Routes::post("/login", LoginMiddleware::class . "::isNotLogin", LoginController:
 
 Routes::get("/signup", LoginMiddleware::class . "::isNotLogin", SignupController::class . "::get");
 Routes::post("/signup", LoginMiddleware::class . "::isNotLogin", SignupController::class . "::post");
+
+Routes::get("/account", LoginMiddleware::class . "::isCustomer", AccountController::class . "::get");
+Routes::post("/account", LoginMiddleware::class . "::isCustomer", AccountController::class . "::post");
+
+Routes::get("/account/password", LoginMiddleware::class . "::isCustomer", PasswordController::class . "::get");
+Routes::post("/account/password", LoginMiddleware::class . "::isCustomer", PasswordController::class . "::post");
 
 Routes::get("/account/carts", LoginMiddleware::class . "::isCustomer", CartController::class . "::get");
 Routes::get("/account/cart/add/([0-9a-zA-Z-]*)", LoginMiddleware::class . "::isCustomer", CartController::class . "::add");

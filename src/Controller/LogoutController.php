@@ -8,21 +8,21 @@ use App\Service\SessionService;
 
 class LogoutController
 {
-    protected SessionService $service;
+    protected SessionService $session;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->service = new SessionService($connection);
+        $this->session = new SessionService($connection);
     }
 
     public function get(): void
     {
-        $session = SessionService::getSession();
+        $session = $this->session->getSession();
         $model = new UserModel;
         $model->id = $session->id;
 
-        $this->service->destroy($model);
+        $this->session->destroy($model);
 
         header("Location: /");
         exit();

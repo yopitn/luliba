@@ -10,34 +10,36 @@ use App\Service\SessionService;
 
 class CartController
 {
-    protected CartService $carts;
+    protected CartService $cart;
+    protected SessionService $session;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->carts = new CartService($connection);
+        $this->cart = new CartService($connection);
+        $this->session = new SessionService($connection);
     }
 
     public function get()
     {
-        $decode = SessionService::getSession();
+        $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
 
         View::render("blog/carts", [
             "title" => "Luliba - Carts",
             "role" => $role,
-            "carts" => $this->carts->findByUserId($decode->id)
+            "carts" => $this->cart->findByUserId($decode->id)
         ]);
     }
 
     public function add(int $product_id)
     {
-        $decode = SessionService::getSession();
+        $decode = $this->session->getSession();
 
         $model = new CartModel();
         $model->user_id = $decode->id;
         $model->product_id = $product_id;
-        $this->carts->create($model);
+        $this->cart->create($model);
 
         header("Location: /account/carts");
         exit();
@@ -45,7 +47,7 @@ class CartController
 
     public function delete(int $product_id)
     {
-        $this->carts->destroy($product_id);
+        $this->cart->destroy($product_id);
         header("Location: /account/carts");
         exit();
     }

@@ -83,25 +83,21 @@ class SessionService
         }
     }
 
-    public static function getSession()
+    public function getSession()
     {
         if (isset($_COOKIE["luliba-session"])) {
-            // $session = $this->connection->prepare("SELECT session FROM session WHERE session = ?");
-            // $session->execute([$_COOKIE["luliba-session"]]);
+            $statement = $this->connection->prepare("SELECT session FROM session WHERE session = ?");
+            $statement->execute([$_COOKIE["luliba-session"]]);
 
-            // if ($session->fetch()) {
-            //     $jwt = $_COOKIE["luliba-session"];
+            if ($row = $statement->fetch()) {
+                $jwt = $row["session"];
 
-            //     $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
+                $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
 
-            //     return $decode;
-            // }
+                return $decode;
+            }
 
-            $jwt = $_COOKIE["luliba-session"];
-
-            $decode = JWT::decode($jwt, new Key(self::SECRET_KEY, "HS256"));
-
-            return $decode;
+            return null;
         }
 
         return null;
