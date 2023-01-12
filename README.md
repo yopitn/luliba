@@ -26,6 +26,6 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 - [x] Halaman products (findAll, create, update).
 - [x] Halaman orders (confirm).
-- [ ] Halaman account.
+- [x] Halaman account.
 - [ ] Halaman setting.
 - [x] Logic admin logout.
