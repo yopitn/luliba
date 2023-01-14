@@ -6,23 +6,27 @@ use App\Config\Database;
 use App\Core\View;
 use App\Model\UserModel;
 use App\Service\SessionService;
+use App\Service\SettingService;
 use App\Utils\ValidationException;
 
 class LoginController
 {
-    protected SessionService $service;
+    protected SessionService $session;
+    protected SettingService $setting;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->service = new SessionService($connection);
+        $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
     }
-
 
     public function get(): void
     {
+        $setting = $this->setting->findAll();
+
         View::render("blog/login", [
-            "title" => "Luliba - Login"
+            "title" => "$setting->sitename - Login"
         ]);
     }
 
@@ -32,8 +36,10 @@ class LoginController
         $model->email = $_POST["email"];
         $model->password = $_POST["password"];
 
+        $setting = $this->setting->findAll();
+
         try {
-            $user = $this->service->create($model);
+            $user = $this->session->create($model);
 
             if ($user->role === "admin") {
                 header("Location: /admin");
@@ -46,7 +52,7 @@ class LoginController
             }
         } catch (ValidationException $error) {
             View::render("blog/login", [
-                "title" => "Luliba - Login",
+                "title" => "$setting->sitename - Login",
                 "message" => $error->getMessage()
             ]);
         }

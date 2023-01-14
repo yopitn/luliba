@@ -70,7 +70,7 @@
                         </div>
 
                         <div class="products__price">
-                          <span class="price">Rp. <?= $product->price ?></span>
+                          <span class="price"><?= $model["setting"]->currency ?> <?= $product->price ?></span>
                         </div>
 
                         <div class="products__stock">
@@ -84,7 +84,7 @@
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__price">
-                      <span class="price">Rp. <?= $product->price ?></span>
+                      <span class="price"><?= $model["setting"]->currency ?> <?= $product->price ?></span>
                     </a>
 
                     <a href="/admin/product/<?= $product->id ?>" class="products__stock">

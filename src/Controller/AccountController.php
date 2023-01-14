@@ -6,32 +6,36 @@ use App\Config\Database;
 use App\Core\View;
 use App\Model\UserModel;
 use App\Service\SessionService;
+use App\Service\SettingService;
 use App\Service\UserService;
 use App\Utils\ValidationException;
 
 class AccountController
 {
-    protected UserService $user;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected UserService $user;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->user = new UserService($connection);
         $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
+        $this->user = new UserService($connection);
     }
-
 
     public function get()
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
         $user = $this->user->findById($decode->id);
 
         View::render("blog/account", [
-            "title" => "Luliba - Account",
+            "title" => "$setting->sitename - Account",
             "role" => $role,
-            "user" => $user
+            "user" => $user,
+            "setting" => $setting
         ]);
     }
 
@@ -39,6 +43,7 @@ class AccountController
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         try {
             $model = new UserModel();
@@ -52,20 +57,22 @@ class AccountController
             $user = $this->user->findById($decode->id);
 
             View::render("blog/account", [
-                "title" => "Luliba - Account",
+                "title" => "$setting->sitename - Account",
                 "role" => $role,
                 "success" => true,
                 "message" => "User data updated successfully",
-                "user" => $user
+                "setting" => $setting,
+                "user" => $user,
             ]);
         } catch (ValidationException $error) {
             $user = $this->user->findById($decode->id);
 
             View::render("blog/account", [
-                "title" => "Luliba - Account",
+                "title" => "$setting->sitename - Account",
                 "role" => $role,
                 "success" => false,
                 "message" => $error->getMessage(),
+                "setting" => $setting,
                 "user" => $user
             ]);
         }

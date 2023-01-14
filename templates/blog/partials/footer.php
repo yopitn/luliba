@@ -4,12 +4,12 @@
         <div class="footer__list-1">
           <div class="footer__about-title">
             <h2>
-              <span class="title">Luliba</span>
+              <span class="title"><?= $model["setting"]->sitename ?></span>
             </h2>
           </div>
 
           <div class="footer__about-description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem, optio.</p>
+            <p><?= $model["setting"]->description ?></p>
           </div>
 
           <div class="footer__about-socmed">
@@ -128,12 +128,13 @@
         </div>
       </div>
 
-      <!-- Luliba akan diganti dengan nama yang dinamis -->
       <div class="footer__copyright">
-        <p>© <?= (new DateTime)->format("Y") ?> ‧ <bdi><a href="/">Luliba</a></bdi>. All rights reserved.</p>
+        <p>© <?= (new DateTime)->format("Y") ?> ‧ <bdi><a href="/"><?= $model["setting"]->sitename ?></a></bdi>. All rights reserved.</p>
       </div>
     </div>
   </footer>
-  </body>
 
-  </html>
+  <script src="/assets/js/script.js"></script>
+</body>
+
+</html>

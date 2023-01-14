@@ -6,33 +6,39 @@ use App\Config\Database;
 use App\Core\View;
 use App\Model\PasswordModel;
 use App\Service\SessionService;
+use App\Service\SettingService;
 use App\Service\UserService;
 use App\Utils\ValidationException;
 
 class AdminPasswordController
 {
-    protected UserService $user;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected UserService $user;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->user = new UserService($connection);
         $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
+        $this->user = new UserService($connection);
     }
     public function get()
     {
+        $setting = $this->setting->findAll();
+
         View::render("admin/password", [
             "title" => "Admin - Change password",
             "isHomepage" => true,
             "isEditor" => false,
+            "setting" => $setting
         ]);
     }
 
     public function post()
     {
         $decode = $this->session->getSession();
-        $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         try {
             $model = new PasswordModel();
@@ -42,19 +48,21 @@ class AdminPasswordController
 
             $this->user->updatePassword($model);
             View::render("admin/password", [
-                "title" => "Luliba - Change password",
+                "title" => "Admin - Change password",
                 "isHomepage" => true,
                 "isEditor" => false,
                 "success" => true,
-                "message" => "Password updated successfully"
+                "message" => "Password updated successfully",
+                "setting" => $setting
             ]);
         } catch (ValidationException $error) {
             View::render("admin/password", [
-                "title" => "Luliba - Change password",
+                "title" => "Admin - Change password",
                 "isHomepage" => true,
                 "isEditor" => false,
                 "success" => false,
-                "message" => $error->getMessage()
+                "message" => $error->getMessage(),
+                "setting" => $setting
             ]);
         }
     }

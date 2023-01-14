@@ -36,7 +36,7 @@
                   </div>
 
                   <div class="orders__price">
-                    <span class="price">Rp. <?= $order->price ?></span>
+                    <span class="price"><?= $model["setting"]->currency ?> <?= $order->price ?></span>
                   </div>
                 </div>
               </div>

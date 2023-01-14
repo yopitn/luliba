@@ -7,16 +7,19 @@ use App\Core\View;
 use App\Model\OrderModel;
 use App\Service\OrderService;
 use App\Service\SessionService;
+use App\Service\SettingService;
 
 class OrderController
 {
-    protected OrderService $orders;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected OrderService $orders;
 
     public function __construct()
     {
         $connection = Database::getConnection();
         $this->orders = new OrderService($connection);
+        $this->setting = new SettingService($connection);
         $this->session = new SessionService($connection);
     }
 
@@ -24,11 +27,13 @@ class OrderController
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         View::render("blog/orders", [
-            "title" => "Luliba - Orders",
+            "title" => "$setting->sitename - Orders",
             "role" => $role,
-            "orders" => $this->orders->findByUserId($decode->id)
+            "orders" => $this->orders->findByUserId($decode->id),
+            "setting" => $setting
         ]);
     }
 

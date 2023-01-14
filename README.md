@@ -8,12 +8,12 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 **Public**
 
-- [x] Halaman home (responsive).
-- [x] Halaman products (responsive).
-- [x] Halaman product (responsive).
-- [x] Halaman search (responsive).
-- [x] Halaman login (responsive).
-- [x] Halaman sign up (responsive).
+- [x] Halaman home.
+- [x] Halaman products.
+- [x] Halaman product.
+- [x] Halaman search.
+- [x] Halaman login.
+- [x] Halaman sign up.
 
 **Customer**
 
@@ -27,5 +27,5 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 - [x] Halaman products (findAll, create, update).
 - [x] Halaman orders (confirm).
 - [x] Halaman account.
-- [ ] Halaman setting.
+- [x] Halaman setting.
 - [x] Logic admin logout.

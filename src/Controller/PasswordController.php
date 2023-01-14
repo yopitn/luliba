@@ -6,29 +6,34 @@ use App\Config\Database;
 use App\Core\View;
 use App\Model\PasswordModel;
 use App\Service\SessionService;
+use App\Service\SettingService;
 use App\Service\UserService;
 use App\Utils\ValidationException;
 
 class PasswordController
 {
-    protected UserService $user;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected UserService $user;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->user = new UserService($connection);
         $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
+        $this->user = new UserService($connection);
     }
 
     public function get()
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         View::render("blog/password", [
-            "title" => "Luliba - Change password",
-            "role" => $role
+            "title" => "$setting->sitename - Change password",
+            "role" => $role,
+            "setting" => $setting
         ]);
     }
 
@@ -36,6 +41,7 @@ class PasswordController
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         try {
             $model = new PasswordModel();
@@ -45,17 +51,19 @@ class PasswordController
 
             $this->user->updatePassword($model);
             View::render("blog/password", [
-                "title" => "Luliba - Change password",
+                "title" => "$setting->sitename - Change password",
                 "role" => $role,
                 "success" => true,
-                "message" => "Password updated successfully"
+                "message" => "Password updated successfully",
+                "setting" => $setting
             ]);
         } catch (ValidationException $error) {
             View::render("blog/password", [
-                "title" => "Luliba - Change password",
+                "title" => "$setting->sitename - Change password",
                 "role" => $role,
                 "success" => false,
-                "message" => $error->getMessage()
+                "message" => $error->getMessage(),
+                "setting" => $setting
             ]);
         }
     }

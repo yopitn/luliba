@@ -77,7 +77,7 @@
 
             <div class="products__footer">
               <div class="products__price">
-                <span class="text">Rp. <?= $product->price ?></span>
+                <span class="text"><?= $model["setting"]->currency ?> <?= $product->price ?></span>
               </div>
 
               <div class="products__cart" data-method="cart">

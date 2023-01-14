@@ -116,6 +116,11 @@
       cursor: pointer;
       user-select: none;
 
+      &.active {
+        background-color: #f5f7f9;
+        color: $titleColor;
+      }
+
       > * {
         margin: 0 5px;
       }

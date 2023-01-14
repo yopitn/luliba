@@ -30,7 +30,7 @@
 
       <div class="header__title">
         <h1>
-          <a href="/" class="title">Luliba</a>
+          <a href="/" class="title"><?= $model["setting"]->sitename ?></a>
         </h1>
       </div>
 

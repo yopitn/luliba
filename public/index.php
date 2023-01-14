@@ -11,6 +11,7 @@ use App\Controller\AdminProductController;
 use App\Controller\AdminProductDeleteController;
 use App\Controller\AdminProductNewController;
 use App\Controller\AdminProductUpdateController;
+use App\Controller\AdminSettingController;
 use App\Controller\CartController;
 use App\Controller\HomeController;
 use App\Controller\LoginController;
@@ -67,6 +68,9 @@ Routes::get("/admin/account", LoginMiddleware::class . "::isAdmin", AdminAccount
 Routes::post("/admin/account", LoginMiddleware::class . "::isAdmin", AdminAccountController::class . "::post");
 Routes::get("/admin/account/password", LoginMiddleware::class . "::isAdmin", AdminPasswordController::class . "::get");
 Routes::post("/admin/account/password", LoginMiddleware::class . "::isAdmin", AdminPasswordController::class . "::post");
+
+Routes::get("/admin/setting", LoginMiddleware::class . "::isAdmin", AdminSettingController::class . "::get");
+Routes::post("/admin/setting", LoginMiddleware::class . "::isAdmin", AdminSettingController::class . "::post");
 
 Routes::get("/admin/logout", LoginMiddleware::class . "::isAdmin", LogoutController::class . "::get");
 

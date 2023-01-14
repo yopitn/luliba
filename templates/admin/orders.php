@@ -55,7 +55,7 @@
                       </div>
 
                       <div class="orders__total">
-                        <span class="total">Rp. 120.000</span>
+                        <span class="total"><?= $model["setting"]->currency ?> <?= $order->price ?></span>
                       </div>
 
                       <div class="orders__action">

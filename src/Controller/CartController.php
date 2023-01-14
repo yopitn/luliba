@@ -7,28 +7,33 @@ use App\Core\View;
 use App\Model\CartModel;
 use App\Service\CartService;
 use App\Service\SessionService;
+use App\Service\SettingService;
 
 class CartController
 {
-    protected CartService $cart;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected CartService $cart;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->cart = new CartService($connection);
         $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
+        $this->cart = new CartService($connection);
     }
 
     public function get()
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         View::render("blog/carts", [
-            "title" => "Luliba - Carts",
+            "title" => "$setting->sitename - Carts",
             "role" => $role,
-            "carts" => $this->cart->findByUserId($decode->id)
+            "carts" => $this->cart->findByUserId($decode->id),
+            "setting" => $setting
         ]);
     }
 

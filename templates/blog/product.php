@@ -37,7 +37,7 @@ $product = $model["product"];
         </div>
 
         <div class="product__price">
-          <span class="price">Rp. <?= $product->price ?></span>
+          <span class="price"><?= $model["setting"]->currency ?> <?= $product->price ?></span>
         </div>
 
         <div class="product__stock">

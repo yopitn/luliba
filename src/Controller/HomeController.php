@@ -6,28 +6,33 @@ use App\Config\Database;
 use App\Core\View;
 use App\Service\ProductService;
 use App\Service\SessionService;
+use App\Service\SettingService;
 
 class HomeController
 {
-    protected ProductService $products;
     protected SessionService $session;
+    protected SettingService $setting;
+    protected ProductService $products;
 
     public function __construct()
     {
         $connection = Database::getConnection();
-        $this->products = new ProductService($connection);
         $this->session = new SessionService($connection);
+        $this->setting = new SettingService($connection);
+        $this->products = new ProductService($connection);
     }
 
     public function get()
     {
         $decode = $this->session->getSession();
         $role = $decode ? $decode->role : null;
+        $setting = $this->setting->findAll();
 
         View::render("blog/home", [
-            "title" => "Luliba",
+            "title" => "$setting->sitename",
             "role" => $role,
-            "products" => $this->products->findAll()
+            "products" => $this->products->findAll(),
+            "setting" => $setting
         ]);
     }
 }
