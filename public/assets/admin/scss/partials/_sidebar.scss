@@ -1,22 +1,52 @@
 .sidebar {
-  flex-shrink: 0;
-  position: relative;
-  width: $sidebarWidth;
   transition: 0.1s ease;
-  z-index: 1;
+
+  @include breakpoint-min(lg) {
+    flex-shrink: 0;
+    position: relative;
+    width: $sidebarWidth;
+    z-index: 1;
+  }
+
+  @include breakpoint-max(lg) {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 40;
+  }
 
   &__container {
-    position: sticky;
-    top: calc($headerHeight - 8px);
+    @include breakpoint-min(lg) {
+      position: sticky;
+      top: calc($headerHeight - 8px);
+    }
+
+    @include breakpoint-max(lg) {
+      position: relative;
+      width: 85%;
+      max-width: 480px;
+      height: 100%;
+      overflow: hidden;
+      transition: inherit;
+      z-index: 3;
+    }
   }
 
   &__inner {
     position: relative;
     display: flex;
-    height: calc(100vh - ($headerHeight - 8px));
-    font-size: 14px;
+    width: 100%;
+    height: 100%;
     background-color: $headerBackground;
+    font-size: 14px;
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.08);
+
+    @include breakpoint-min(lg) {
+      height: calc(100vh - ($headerHeight - 8px));
+    }
   }
 
   &__content {
@@ -43,6 +73,32 @@
     }
   }
 
+  &__close {
+    display: none;
+
+    @include breakpoint-max(lg) {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      height: calc($headerHeight - 8px);
+      padding: 14px 20px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+
+      label {
+        cursor: pointer;
+        user-select: none;
+
+        &::before {
+          content: "\2715";
+          line-height: 18px;
+          font-size: 18px;
+          font-weight: 800;
+          color: $iconColor;
+        }
+      }
+    }
+  }
+
   &__menu {
     list-style: none;
     padding: 20px;
@@ -57,6 +113,13 @@
       position: absolute;
       bottom: 0;
       background-color: $headerBackground;
+
+      @include breakpoint-max(lg) {
+        > li:nth-child(1),
+        > li:nth-child(2) {
+          display: none;
+        }
+      }
     }
 
     &-dropdown {
@@ -134,19 +197,117 @@
       }
     }
   }
+
+  &__menu-mobile {
+    display: none;
+
+    @include breakpoint-max(lg) {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      background: $headerBackground;
+      color: $textColor;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 0 20px;
+      box-shadow: 0px -8px 28px 0px rgba(82, 63, 105, 0.08);
+      z-index: 1;
+
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: calc($headerHeight - 10px);
+
+        > * {
+          flex: 0 0 25%;
+          max-width: 25%;
+          display: inline-flex;
+          justify-content: center;
+        }
+      }
+
+      .link {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        color: inherit;
+        cursor: pointer;
+        user-select: none;
+
+        span {
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          margin: 2px 0 0;
+          transition: inherit;
+          opacity: 0.9;
+        }
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &__cover {
+    display: none;
+
+    @include breakpoint-max(lg) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: block;
+      width: 100%;
+      height: 100vh;
+      background-color: transparent;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.1s ease;
+      z-index: 2;
+    }
+  }
 }
 
 .off-sidebar:checked ~ .content .sidebar {
-  width: 75px;
+  @include breakpoint-min(lg) {
+    width: 75px;
 
-  .sidebar__content {
-    .link {
-      max-width: 50px;
-      border-radius: 16px;
+    &__content {
+      .link {
+        max-width: 50px;
+        border-radius: 16px;
+      }
+
+      svg.line {
+        display: none;
+      }
     }
 
-    svg.line {
-      display: none;
+    &__menu-dropdown {
+      opacity: 0;
+      visibility: hidden;
+      max-height: 0;
+    }
+  }
+
+  @include breakpoint-max(lg) {
+    left: 0;
+
+    &__cover {
+      background-color: rgba(0, 0, 0, 0.25);
+      opacity: 1;
+      visibility: visible;
+      backdrop-filter: saturate(180%) blur(10px);
     }
   }
 }

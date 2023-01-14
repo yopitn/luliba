@@ -1,5 +1,15 @@
 <aside class="sidebar">
-  <ul>
+  <input class="hidden off-sidebar" type="checkbox" id="off-sidebar">
+
+  <div class="sidebar__icon">
+    <label for="off-sidebar" class="sidebar__close">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+  </div>
+
+  <ul class="sidebar__content">
     <li>
       <a href="/account" class="link">
         <svg viewBox="0 0 24 24">

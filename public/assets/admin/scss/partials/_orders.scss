@@ -37,24 +37,77 @@
     }
 
     &-item {
-      > * {
-        max-width: 20.66%;
-        flex: 0 0 20.66%;
+      @include breakpoint-min(md) {
+        > * {
+          max-width: 100%;
+          flex: 0 0 100%;
+        }
+
+        .orders__content {
+          display: flex;
+          align-items: center;
+          padding: 0;
+
+          > * {
+            max-width: 20.66%;
+            flex: 0 0 20.66%;
+            padding: 10px;
+          }
+
+          > *:first-child {
+            max-width: 10%;
+            flex: 0 0 10%;
+          }
+
+          > *:nth-child(2) {
+            max-width: 28%;
+            flex: 0 0 28%;
+          }
+
+          > *:last-child {
+            display: inline-flex;
+            justify-content: center;
+          }
+        }
+
+        .orders__footer {
+          display: none;
+        }
       }
 
-      > *:first-child {
-        max-width: 10%;
-        flex: 0 0 10%;
-      }
+      @include breakpoint-max(md) {
+        display: block;
+        padding: 10px;
 
-      > *:nth-child(2) {
-        max-width: 28%;
-        flex: 0 0 28%;
-      }
+        .orders__content {
+          display: flex;
+          align-items: center;
 
-      > *:last-child {
-        display: inline-flex;
-        justify-content: center;
+          > *:first-child {
+            max-width: 20%;
+            flex: 0 0 20%;
+          }
+
+          > * {
+            max-width: 26.66%;
+            flex: 0 0 26.66%;
+          }
+
+          > *:last-child {
+            display: none;
+          }
+        }
+
+        .orders__footer {
+          display: flex;
+          justify-content: flex-end;
+          margin-top: 16px;
+
+          .btn {
+            padding: 8px;
+            font-size: 12px;
+          }
+        }
       }
     }
 
@@ -73,6 +126,10 @@
       font-size: 15px;
       font-weight: 800;
       opacity: 0.9;
+
+      @include breakpoint-max(md) {
+        font-size: 13px;
+      }
     }
   }
 
@@ -81,6 +138,10 @@
       font-size: 15px;
       font-weight: 500;
 
+      @include breakpoint-max(md) {
+        font-size: 13px;
+      }
+
       &.pending {
         color: #ffc107;
       }
@@ -88,6 +149,13 @@
       &.success {
         color: #218838;
       }
+    }
+  }
+
+  &__action {
+    .btn {
+      font-size: 13px;
+      padding: 10px;
     }
   }
 }

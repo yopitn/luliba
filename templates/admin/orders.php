@@ -41,23 +41,31 @@
               <?php if (count($model["orders"]) > 0) { ?>
                 <?php foreach ($model["orders"] as $order) { ?>
                   <div class="main__table-item">
-                    <div class="orders__id">
-                      <span class="text">#<?= $order->id ?></span>
+                    <div class="orders__content">
+                      <div class="orders__id">
+                        <span class="text">#<?= $order->id ?></span>
+                      </div>
+
+                      <div class="orders__customer">
+                        <span class="name"><?= $order->customer ?></span>
+                      </div>
+
+                      <div class="orders__status">
+                        <span class="status <?= $order->status !== true ? "pending" : "success" ?>"><?= $order->status !== true ? "Pending" : "Success" ?></span>
+                      </div>
+
+                      <div class="orders__total">
+                        <span class="total">Rp. 120.000</span>
+                      </div>
+
+                      <div class="orders__action">
+                        <a href="/admin/order/confirm/<?= $order->id ?>" class="btn btn-secondary">
+                          <span class="text">Confirm</span>
+                        </a>
+                      </div>
                     </div>
 
-                    <div class="orders__customer">
-                      <span class="name"><?= $order->customer ?></span>
-                    </div>
-
-                    <div class="orders__status">
-                      <span class="status <?= $order->status !== true ? "pending" : "success" ?>"><?= $order->status !== true ? "Pending" : "Success" ?></span>
-                    </div>
-
-                    <div class="orders__total">
-                      <span class="total">Rp. 120.000</span>
-                    </div>
-
-                    <div class="orders__action">
+                    <div class="orders__footer">
                       <a href="/admin/order/confirm/<?= $order->id ?>" class="btn btn-secondary">
                         <span class="text">Confirm</span>
                       </a>

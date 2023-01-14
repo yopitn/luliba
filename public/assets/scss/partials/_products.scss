@@ -19,7 +19,7 @@
       justify-content: center;
       width: 100%;
       margin: 25px 0 20px;
-  
+
       ul {
         list-style: none;
         padding: 0;
@@ -27,13 +27,13 @@
         display: inline-flex;
         flex-wrap: wrap;
         align-items: center;
-  
+
         > li {
           margin: 0 4px;
           margin-bottom: 8px;
         }
       }
-  
+
       .link {
         display: block;
         padding: 10px 16px;
@@ -51,13 +51,13 @@
       width: 100%;
       display: flex;
       justify-content: center;
-  
+
       form {
         position: relative;
         width: 100%;
         max-width: 720px;
       }
-  
+
       input {
         display: block;
         width: 100%;
@@ -68,20 +68,20 @@
         outline: none;
         border: none;
         border-radius: 6px;
-  
+
         @include breakpoint-max(sm) {
           padding: 12px 64px 12px 12px;
         }
-  
+
         &:focus ~ button[type="reset"] {
           opacity: 1;
         }
-  
+
         &::-webkit-search-cancel-button {
           display: none;
         }
       }
-  
+
       button {
         position: absolute;
         top: 0;
@@ -93,31 +93,31 @@
         outline: 0;
         border: 0;
         z-index: 3;
-  
+
         &[type="reset"] {
           right: 46px;
           font-size: 13px;
           font-weight: 500;
           opacity: 0;
           transition: 0.1s ease;
-  
+
           @include breakpoint-max(sm) {
             right: 44px;
           }
-  
+
           &::before {
             content: "\2715";
           }
         }
-  
+
         &[type="submit"] {
           right: 14px;
-  
+
           @include breakpoint-max(sm) {
             right: 12px;
           }
         }
-  
+
         svg {
           width: 20px;
           height: 20px;
@@ -135,6 +135,12 @@
     flex-wrap: wrap;
     width: calc(100% + 20px);
 
+    @include breakpoint-max(sm) {
+      left: -5px;
+      right: -5px;
+      width: calc(100% + 10px);
+    }
+
     > * {
       flex: 0 0 calc(25% - 20px);
       max-width: calc(25% - 20px);
@@ -146,8 +152,9 @@
       }
 
       @include breakpoint-max(sm) {
-        flex: 0 0 calc(50% - 20px);
-        max-width: calc(50% - 20px);
+        flex: 0 0 calc(50% - 10px);
+        max-width: calc(50% - 10px);
+        margin: 0 5px 10px;
       }
     }
   }
@@ -160,6 +167,10 @@
     overflow: hidden;
     box-shadow: none;
     transition: 0.2s ease;
+
+    @include breakpoint-max(sm) {
+      padding: 10px;
+    }
 
     &:hover {
       box-shadow: 8px 8px 14px $borderColor;
@@ -205,8 +216,8 @@
     margin: 20px 0 10px;
     line-height: 1.4em;
 
-    @include breakpoint-max(480px) {
-      font-size: 15px;
+    @include breakpoint-max(sm) {
+      font-size: 14px;
     }
 
     a {
@@ -225,8 +236,13 @@
 
   &__category {
     font-size: 15px;
-    opacity: .8;
+    font-weight: 500;
+    opacity: 0.8;
     margin: 10px 0;
+
+    @include breakpoint-max(sm) {
+      font-size: 14px;
+    }
   }
 
   &__footer {
@@ -238,6 +254,10 @@
   &__price {
     font-size: 16px;
     font-weight: 800;
+
+    @include breakpoint-max(sm) {
+      font-size: 15px;
+    }
   }
 
   &__cart {
@@ -275,6 +295,11 @@
     .btn {
       padding: 12px 16px;
       font-size: 15px;
+
+      @include breakpoint-max(sm) {
+        padding: 10px 12px;
+        font-size: 14px;
+      }
     }
   }
 }

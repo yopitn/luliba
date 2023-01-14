@@ -8,16 +8,29 @@
     width: calc(100% - $sidebarWidth);
   }
 
+  @include breakpoint-max(sm) {
+    padding: 30px 0 ($headerHeight - 10px);
+  }
+
   .container {
     padding: 0 20px;
   }
 
   &__header {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     margin-bottom: 20px;
+
+    @include breakpoint-min(sm) {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include breakpoint-max(sm) {
+      > *:first-child {
+        margin-bottom: 15px;
+      }
+    }
   }
 
   &__search {
@@ -113,6 +126,11 @@
       border-radius: 6px;
     }
 
+    textarea {
+      min-height: 100px;
+      line-height: 1.4em;
+    }
+
     input:disabled {
       background-color: $borderColor;
       cursor: no-drop;
@@ -144,17 +162,21 @@
 
   &__table {
     &-header {
-      display: flex;
-      align-items: center;
-      margin-bottom: 14px;
+      display: none;
 
-      > * {
-        flex: 0 0 20%;
-        max-width: 20%;
-        font-size: 12px;
-        font-weight: 500;
-        text-transform: uppercase;
-        opacity: 0.9;
+      @include breakpoint-min(md) {
+        display: flex;
+        align-items: center;
+        margin-bottom: 14px;
+
+        > * {
+          flex: 0 0 20%;
+          max-width: 20%;
+          font-size: 12px;
+          font-weight: 500;
+          text-transform: uppercase;
+          opacity: 0.9;
+        }
       }
     }
 
@@ -168,13 +190,18 @@
       box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.08);
 
       > * {
-        flex: 0 0 20%;
-        max-width: 20%;
         color: $textColor;
-        padding: 10px;
 
         &:hover {
           opacity: 1;
+        }
+      }
+
+      @include breakpoint-min(md) {
+        > * {
+          flex: 0 0 20%;
+          max-width: 20%;
+          padding: 10px;
         }
       }
     }

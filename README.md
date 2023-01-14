@@ -8,12 +8,12 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 
 **Public**
 
-- [x] Halaman home.
-- [x] Halaman products.
-- [x] Halaman product.
-- [x] Halaman search.
-- [x] Halaman login.
-- [x] Halaman sign up.
+- [x] Halaman home (responsive).
+- [x] Halaman products (responsive).
+- [x] Halaman product (responsive).
+- [x] Halaman search (responsive).
+- [x] Halaman login (responsive).
+- [x] Halaman sign up (responsive).
 
 **Customer**
 

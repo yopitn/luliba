@@ -28,14 +28,79 @@
 
   .sidebar {
     position: relative;
-    width: $sidebarWidth;
 
-    ul {
+    @include breakpoint-min(md) {
+      width: $sidebarWidth;
+    }
+
+    @include breakpoint-max(md) {
+      width: 100%;
+    }
+
+    &__icon {
+      display: none;
+
+      @include breakpoint-max(md) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        margin-bottom: 20px;
+
+        label {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 30px;
+          height: 30px;
+          background-color: $contentBackground;
+          border-radius: 4px;
+          cursor: pointer;
+          user-select: none;
+
+          span {
+            display: block;
+            width: 18px;
+            height: 2px;
+            background-color: $iconColor;
+
+            &:nth-child(1) {
+              position: absolute;
+              top: 8px;
+            }
+
+            &:nth-child(3) {
+              position: absolute;
+              bottom: 8px;
+            }
+          }
+        }
+      }
+    }
+
+    &__content {
       list-style: none;
       padding: 0;
       margin: 0;
       background-color: $contentBackground;
       border-radius: 6px;
+
+      @include breakpoint-max(md) {
+        position: absolute;
+        top: 34px;
+        left: 0;
+        right: 0;
+        width: 100%;
+        min-height: 0;
+        border: 1px solid $borderColor;
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+        box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.08);
+        transition: 0.1s ease;
+        z-index: 10;
+      }
     }
 
     .link {
@@ -85,6 +150,10 @@
   .main {
     padding: 0;
     width: calc(100% - ($sidebarWidth + 30px));
+
+    @include breakpoint-max(md) {
+      width: 100%;
+    }
   }
 
   &__form {
@@ -176,4 +245,10 @@
       }
     }
   }
+}
+
+.off-sidebar:checked ~ .sidebar__content {
+  max-height: 100vh;
+  opacity: 1;
+  visibility: visible;
 }

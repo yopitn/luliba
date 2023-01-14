@@ -48,17 +48,33 @@
                 <?php foreach ($model["products"] as $product) { ?>
                   <div class="main__table-item">
                     <a href="/admin/product/<?= $product->id ?>" class="products__detail">
-                      <div class="products__image">
-                        <div class="image" style="background-image: url('/content/images<?= $product->image ?>');"></div>
-                      </div>
-
-                      <div class="products__info">
-                        <div class="products__title">
-                          <span class="title"><?= $product->name ?></span>
+                      <div class="products__content">
+                        <div class="products__image">
+                          <div class="image" style="background-image: url('/content/images<?= $product->image ?>');"></div>
                         </div>
 
-                        <div class="products__description">
-                          <span class="text"><?= $product->description ?></span>
+                        <div class="products__info">
+                          <div class="products__title">
+                            <span class="title"><?= $product->name ?></span>
+                          </div>
+
+                          <div class="products__description">
+                            <span class="text"><?= $product->description ?></span>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="products__footer">
+                        <div class="products__category">
+                          <span class="category"><?= $product->category ?></span>
+                        </div>
+
+                        <div class="products__price">
+                          <span class="price">Rp. <?= $product->price ?></span>
+                        </div>
+
+                        <div class="products__stock">
+                          <span class="price"><?= $product->stock ?></span>
                         </div>
                       </div>
                     </a>

@@ -30,6 +30,7 @@
         position: relative;
         display: flex;
         align-items: center;
+        height: calc($headerHeight - 8px);
 
         &:not(:last-child) {
           margin-right: 10px;
