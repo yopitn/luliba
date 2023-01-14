@@ -4,6 +4,11 @@ Merupakan sebuah aplikasi e-commerce yang dibuat menggunakan PHP dan MySQL. Apli
 
 Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap belajar.
 
+## Demo
+
+![Homepage](/preview/images/homepage.png)
+![Admin](/preview/images/admin.png)
+
 ## Goals
 
 **Public**
@@ -29,3 +34,21 @@ Kodingannya mungkin berantakan, mohon dimaklumi karena saya masih dalam tahap be
 - [x] Halaman account.
 - [x] Halaman setting.
 - [x] Logic admin logout.
+
+## Getting started
+
+Clone repository ini.
+
+```
+git clone https://github.com/yopitn/luliba.git
+```
+
+Buka folder project di terminal lalu install dependency-nya.
+
+```
+cd luliba
+
+composer install
+```
+
+Selesai.
